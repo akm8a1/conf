@@ -33,7 +33,7 @@ hystrix:
     
 ---
 server:
-  port: 8001
+  port: 8002
 spring:
   profiles: test
   application:
