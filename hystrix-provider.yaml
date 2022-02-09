@@ -1,0 +1,65 @@
+spring:
+  profiles: 
+    active: dev 
+---
+server:
+  port: 8001
+spring:
+  profiles: dev 
+  application:
+    name: springcloud-deptProvider
+  datasource:
+    username: root
+    password: 180018ly
+    url: jdbc:mysql://localhost:3306/springcloud01?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.liu.hystrix_provider.pojo
+  config-location: classpath:mybatis/mybatis-config.xml
+
+#配置Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: dept_provider_hystrix
+
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "localhost"
+    
+---
+server:
+  port: 8001
+spring:
+  profiles: test
+  application:
+    name: springcloud-deptProvider
+  datasource:
+    username: root
+    password: 180018ly
+    url: jdbc:mysql://localhost:3306/springcloud01?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.liu.hystrix_provider.pojo
+  config-location: classpath:mybatis/mybatis-config.xml
+
+#配置Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: dept_provider_hystrix
+
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "localhost"
+
+
+
